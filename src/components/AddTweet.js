@@ -1,18 +1,40 @@
 import React from "react"
-import {Link} from "react-router-dom"
+// import {Link} from "react-router-dom"
 
 export default class AddTweet extends React.Component{
-    render(){
-        return (
-            <div className="addTweetContainer">
-                <h1 className="formTitle">Add a Tweet</h1>
-                <form className="form">
-                    <label> Message<br/>
-                        <input type="text" placeholder="Write a tweet..."/>
-                    </label>
-                </form>
+    constructor(props){
+        super(props)
 
-                <Link to={"/"} className="backLink">Back to All Tweets</Link>
+        this.state = {
+            newTweetText:''
+        }
+    }
+
+    handleChagneNewTweetText(event){
+        this.setState({
+            newTweetText:event.target.value
+        })
+    }
+
+    handleSubmitTweet(){
+        this.setState({newTweetText:''})
+    }
+    render(){
+        const {newTweetText} = this.state
+        return (
+            <div className="addTweetContainer" >
+                <div className="form">
+                    <label> Add a Tweet </label><br/>
+                        <textarea rows="3"
+                        placeholder="Write a tweet..."
+                        value={newTweetText}
+                        onChange={this.handleChagneNewTweetText.bind(this)}
+
+                        />
+                    <button className="backLink" onClick={this.handleSubmitTweet.bind(this)}>Submit Tweet</button>
+                </div>
+
+                {/* <Link to={"/"} className="backLink">Back to All Tweets</Link> */}
             </div>
         )
     }

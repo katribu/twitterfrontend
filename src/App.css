@@ -28,6 +28,7 @@ body, html {
   margin: 20px auto;
   max-width: 500px;
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 .user, .message {
@@ -70,26 +71,19 @@ body, html {
 
 /* ADDTWEET */
 .addTweetContainer{
-  background:rgb(104, 90, 215);
   width: 500px;
   margin: 0 auto;
   padding: 20px;
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
-}
+  border: 1px solid black;
 
-.form {
-  height: 40vh;
 }
-
-.formTitle{
-  text-transform: uppercase;
-}
-
-input {
+textarea {
   width: 80%;
-  height: 40px;
   border: none;
   border-radius: 10px;
   padding-left: 15px;
+  margin-top: 10px;
+  font-family: inherit;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { getAllTweets } from '../services/fetch'
 import Tweet from './Tweet'
-
+import AddTweet from './AddTweet'
 
 export default class Feed extends React.Component{
     constructor(props){
@@ -60,8 +60,9 @@ export default class Feed extends React.Component{
         return(
             // get all the tweets
             <div className="feedContainer">
-                <h2 className="feedTitle">Tweeter</h2>
-                {tweets}
+            <h2 className="feedTitle">Tweeter</h2>
+              <AddTweet/>
+            {tweets}
             </div>
         )
     }

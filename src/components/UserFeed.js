@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {FaTwitter} from 'react-icons/fa'
 
 
+
 export default class UserFeed extends React.Component{
     constructor(props){
         super(props)
@@ -45,11 +46,11 @@ export default class UserFeed extends React.Component{
         return(
             // get tweets according to username
             <div className="userFeedContainer">
+                
                 <h2><FaTwitter/> Feed for @{this.props.match.params.username}</h2>
                 <div className="userTweets">{usernameTweets}</div>
                 <div className="linkDiv">
                     <Link to={"/"} className="backLink">Back to All Tweets</Link>
-                    <Link to={"/addtweet"} className="backLink">Add Tweet</Link>
                 </div> 
 
             </div>
