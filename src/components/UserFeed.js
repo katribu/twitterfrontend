@@ -47,7 +47,11 @@ export default class UserFeed extends React.Component{
             <div className="userFeedContainer">
                 <h2><FaTwitter/> Feed for @{this.props.match.params.username}</h2>
                 <div className="userTweets">{usernameTweets}</div>
-                <div className="linkDiv"><Link to={"/"} className="backLink">Back to All Tweets</Link></div> 
+                <div className="linkDiv">
+                    <Link to={"/"} className="backLink">Back to All Tweets</Link>
+                    <Link to={"/addtweet"} className="backLink">Add Tweet</Link>
+                </div> 
+
             </div>
         )
     }

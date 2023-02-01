@@ -44,7 +44,7 @@ body, html {
 .userFeedContainer {
   background:rgb(104, 90, 215);
   margin: 20px auto;
-  max-width: 400px;
+  max-width: 500px;
   padding: 20px;
   border-radius: 10px;
 }
@@ -61,6 +61,7 @@ body, html {
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 10px;
+  margin: 10px;
 }
 
 .linkDiv {

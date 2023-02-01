@@ -1,8 +1,6 @@
 import React from 'react'
 import { getAllTweets } from '../services/fetch'
-import {Link} from 'react-router-dom'
-import Moment from 'react-moment';
-import {FaTwitter} from 'react-icons/fa'
+import Tweet from './Tweet'
 
 
 export default class Feed extends React.Component{
@@ -22,16 +20,9 @@ export default class Feed extends React.Component{
     render(){
         const {allTweets} = this.state
         const tweets = allTweets.map(tweet => {
-            return (
-                <div key={tweet.id} className="tweetContainer">
-                    <div className="user">
-                        <h4><FaTwitter/>{tweet.name} <Link to={`/user/${tweet.username}`}>(@{tweet.username}) </Link>
-                        <span className="ago"><Moment fromNow>{tweet.created_at}</Moment></span></h4>
-                    </div>
-                    <p className="message">{tweet.message}</p>
-                </div>
-            )
+           return <Tweet tweetInfo={tweet}/>
         })
+
         return(
             // get all the tweets
             <div className="feedContainer">
