@@ -1,5 +1,5 @@
 import React from "react"
-// import {Link} from "react-router-dom"
+import { createTweet } from "../services/fetch"
 
 export default class AddTweet extends React.Component{
     constructor(props){
@@ -16,8 +16,14 @@ export default class AddTweet extends React.Component{
         })
     }
 
-    handleSubmitTweet(){
-        this.setState({newTweetText:''})
+   async handleSubmitTweet(){
+    const {newTweetText} = this.state
+    const result = await createTweet(newTweetText)
+        this.setState({
+            newTweetText:''
+        })
+    this.handlePopulateTweets()
+    // this.handlePopulateTweets() this method is from the Feed.js file.
     }
     render(){
         const {newTweetText} = this.state
@@ -34,7 +40,7 @@ export default class AddTweet extends React.Component{
                     <button className="backLink" onClick={this.handleSubmitTweet.bind(this)}>Submit Tweet</button>
                 </div>
 
-                {/* <Link to={"/"} className="backLink">Back to All Tweets</Link> */}
+                
             </div>
         )
     }
