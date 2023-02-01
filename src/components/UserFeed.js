@@ -1,6 +1,7 @@
 import React from 'react'
 import { getTweets } from '../services/fetch'
 import {Link} from 'react-router-dom'
+import {FaTwitter} from 'react-icons/fa'
 
 
 export default class UserFeed extends React.Component{
@@ -35,7 +36,7 @@ export default class UserFeed extends React.Component{
             return (
             <div key={tweet.id}>
                 <p>
-                {tweet.message} 
+                Tweet {tweet.id}: {tweet.message} 
                 </p>     
             </div>
             )
@@ -43,10 +44,10 @@ export default class UserFeed extends React.Component{
 
         return(
             // get tweets according to username
-            <div>
-                <h2>User Feed for @{this.props.match.params.username}</h2>
-                {usernameTweets}
-                <Link to={"/"}>Back to All Tweets</Link> 
+            <div className="userFeedContainer">
+                <h2><FaTwitter/> Feed for @{this.props.match.params.username}</h2>
+                <div className="userTweets">{usernameTweets}</div>
+                <div className="linkDiv"><Link to={"/"} className="backLink">Back to All Tweets</Link></div> 
             </div>
         )
     }
