@@ -8,17 +8,51 @@ export default class Feed extends React.Component{
         super(props)
 
         this.state = {
-            allTweets:[]
+            allTweets:[],
+            isLoading:true,
+            error:null,
         }
     }
 
     async componentDidMount(){
-        const allTweets = await getAllTweets()
-        this.setState({allTweets})
+        await this.handlePopulateTweets()
         // console.log(allTweets)
     }
+
+    async handlePopulateTweets(){
+        this.setState({
+            isLoading:true,
+            error: null,
+        })
+
+        try {
+            const allTweets = await getAllTweets()
+            this.setState({allTweets, isLoading:false})
+        }catch(error){
+            this.setState({error:error})
+        }
+    }
+
     render(){
-        const {allTweets} = this.state
+        const {allTweets,isLoading,error} = this.state
+
+        if (error) {
+            return (
+              <div>
+                <h3>Unable to fetch tweets: {error.message}</h3>
+                <button className="backLink"onClick={this.handlePopulateTweets.bind(this)}>
+                  Retry
+                </button>
+              </div>
+            );
+          }
+      
+          if (isLoading) {
+            return (
+              <div>Loading tweets...</div>
+            );
+          }
+
         const tweets = allTweets.map(tweet => {
            return <Tweet tweetInfo={tweet}/>
         })
