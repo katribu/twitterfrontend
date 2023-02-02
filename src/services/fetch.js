@@ -18,10 +18,11 @@ async function createTweet(text){
             'Content-Type': 'application/json',
             'x-user': 'santaclaus',
         },
-        body:JSON.stringify(text),
+        body:JSON.stringify({text}),
     })
     const data = await response.json()
     return data;
 }
+
 
 export {getTweets, getAllTweets, createTweet}
