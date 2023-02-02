@@ -1,6 +1,8 @@
 import React from 'react'
 import { getAllTweets,createTweet } from '../services/fetch'
 import Tweet from './Tweet'
+import jwtDecode from 'jwt-decode'
+import { Link } from "react-router-dom";
 
 export default class Feed extends React.Component{
   constructor(props){
@@ -11,12 +13,24 @@ export default class Feed extends React.Component{
       isLoading:true,
       error:null,
       newTweetText:'',
+      user:{},
     }
   }
 
   async componentDidMount(){
+    const {history} = this.props
+    const token = localStorage.getItem('TWITTER_TOKEN')
+
+    if(!token){
+      history.replace('/login')
+      return;
+    }
+
+    const payload = jwtDecode(token)
+    this.setState({user:payload})
+
+    //Fetch tweets from server
     await this.handlePopulateTweets()
-    // console.log(allTweets)
   }
 
   async handlePopulateTweets(){
@@ -49,7 +63,7 @@ export default class Feed extends React.Component{
   }
 
   render(){
-    const {allTweets,isLoading,error,newTweetText} = this.state
+    const {allTweets,isLoading,error,newTweetText,user} = this.state
 
     if (error) {
       return (
@@ -76,7 +90,8 @@ export default class Feed extends React.Component{
         // get all the tweets
     <div className="feedContainer">
       <h2 className="feedTitle">Tweeter</h2>
-
+      <h4>Feed (logged in as {user.name})</h4>
+        <Link to="/logout" className="backLink">Log out</Link>
         <div className="addTweetContainer" >
           <div className="form">
               <label> Add a Tweet </label><br/>
