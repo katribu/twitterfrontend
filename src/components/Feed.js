@@ -92,8 +92,10 @@ export default class Feed extends React.Component{
       <h2 className="feedTitle">Tweeter</h2>
       <h4>Feed (logged in as {user.name})</h4>
         <Link to="/logout" className="backLink">Log out</Link>
+
+        
         <div className="addTweetContainer" >
-          <div className="form">
+          <div>
               <label> Add a Tweet </label><br/>
               <textarea 
                 rows="3"

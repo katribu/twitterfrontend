@@ -87,3 +87,25 @@ textarea {
   margin-top: 10px;
   font-family: inherit;
 }
+
+/* LOGIN */
+
+.loginContainer{
+  margin: 20px auto;
+  width: 400px;
+  background-color: rgb(195, 162, 226);
+  padding: 20px;
+  border-radius: 10px;
+  font-family: inherit;
+}
+
+.loginH1 {
+  margin: 0;
+}
+
+.loginInput{
+  margin: 10px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+}
